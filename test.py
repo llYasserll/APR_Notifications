@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 
 
-driver = webdriver.Chrome()
+driver = webdriver.Edge()
 
 driver.get("https://www.gate.io/es/startup-mining")
 driver.maximize_window()
