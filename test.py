@@ -1,9 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.edge.options import Options
 import time
 
+edge_options = Options()
+edge_options.add_argument("--headless")
 
-driver = webdriver.Edge()
+driver = webdriver.Edge(options=edge_options)
 
 driver.get("https://www.gate.io/es/startup-mining")
 driver.maximize_window()
