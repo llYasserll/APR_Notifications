@@ -4,7 +4,7 @@ from selenium.webdriver.edge.options import Options
 import time
 
 edge_options = Options()
-#edge_options.add_argument("--headless")
+edge_options.add_argument("--headless")
 
 driver = webdriver.Edge(options=edge_options)
 
