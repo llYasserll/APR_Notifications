@@ -15,7 +15,8 @@
     "csv-parse": "^5.6.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "navi-sdk": "^1.4.23"
+    "navi-sdk": "^1.4.23",
+    "node": "file:"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
