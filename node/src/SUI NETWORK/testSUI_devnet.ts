@@ -19,7 +19,7 @@ GetCoins();*/
 
 // Definir el cliente y el mnemonic
 const client = new SuiClient({ url: getFullnodeUrl('devnet') });
-const exampleMnemonic = 'drum hammer habit other argue rice pledge ivory trade merge crunch chat';
+const exampleMnemonic = '<Tu frase semilla aqui>';
 const keypair = Ed25519Keypair.deriveKeypair(exampleMnemonic);
 
 console.log(keypair)
