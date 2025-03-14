@@ -1,7 +1,8 @@
 import { getFullnodeUrl, SuiClient } from '@mysten/sui/client';
 import { SerialTransactionExecutor, Transaction } from '@mysten/sui/transactions';
 import { Ed25519Keypair } from '@mysten/sui/keypairs/ed25519';
-
+import dotenv from 'dotenv'
+import path from 'path'
  
 // get coins owned by an address
 // replace <OWNER_ADDRESS> with actual address in the form of 0x123...
@@ -15,14 +16,13 @@ GetCoins();*/
 
 
 // Cargar las variables de entorno
-//dotenv.config({ path: path.join(__dirname, '../.env') });
-
+dotenv.config({ path: path.dirname(__dirname) + '/.env' });
+const mnemonic = process.env.mnemonic || '';
 // Definir el cliente y el mnemonic
 const client = new SuiClient({ url: getFullnodeUrl('devnet') });
-const exampleMnemonic = '<Tu frase semilla aqui>';
-const keypair = Ed25519Keypair.deriveKeypair(exampleMnemonic);
+const keypair = Ed25519Keypair.deriveKeypair(mnemonic);
 
-console.log(keypair)
+//console.log(keypair)
 
  
 const executor = new SerialTransactionExecutor({
