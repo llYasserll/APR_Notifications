@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.options import Options
+import logging
 
 import time
 
@@ -9,24 +10,39 @@ driver = webdriver.Edge()
 driver.get("https://www.bybit.com/es-419/trade/spot/launchpool")
 driver.maximize_window()
 time.sleep(6)
-comingSoon = driver.find_elements(By.XPATH, "//div[4]/div/div[3]/div/div/div[1]")
-APR = driver.find_elements(By.XPATH, "//div[4]//div[3]/div/div/div[2]/div[2]/div[5]/div[1]/div[4]/div[1]/div[2]/div[1]")
-coin = driver.find_element(By.XPATH, "//div[4]/div/div[3]/div/div/div[2]/div[1]/div[1]/div[1]/div[1]/span")
-#commingSoonDay = driver.find_element(By.XPATH, "//div[4]/div/div[3]/div[i]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div/span")
-#commingSoonHours = driver.find_element(By.XPATH, "//div[4]/div/div[3]/div[i]/div/div[2]/div[1]/div[2]/div[3]/div/div[2]/div[2]/div/span")
-#commingSoonMinutes = driver.find_element(By.XPATH, "//div[4]/div/div[3]/div[i]/div/div[2]/div[1]/div[2]/div[3]/div/div[2]/div[3]/div/span")
-count_comingsoon = 0
-for a in comingSoon:
-    if 'Coming Soon' in a.text:
-        print(a.text)
-        count_comingsoon += 1
-    elif 'Ongoing' in a.text:
-        print(a.text)
-for b in APR:
-    print(b.text)
-for c in coin:
-    print(c.text)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='[%(levelname)s] %(asctime)s - %(message)s',
+    datefmt='%H:%M:%S'
+)
+
+elements_earntokens=len(driver.find_elements(By.XPATH, "(//div[contains(@class, 'LaunchPoolPage')])[1]/div[3]/div[contains(@class,'NoEndActivites')]"))
+elements=len(driver.find_elements(By.XPATH, "(//div[contains(@class, 'LaunchPoolPage')])[1]/div[3]/div[contains(@class,'NoEndActivites')]"))
+
+i=0
+
+while i < elements_earntokens:
     
+    #pool = driver.find_element(By.XPATH, f"(//div[contains(@class, 'LaunchPoolPage')])[1]/div[3]/div[contains(@class,'NoEndActivites')][{i+1}]/div[2]/div/div[2]/div[2]/div[{j+1}]/div[1]/div[1]/div/div[1]/div[1]")
+    #apr = driver.find_element(By.XPATH, f"(//div[contains(@class, 'LaunchPoolPage')])[1]/div[3]/div[contains(@class,'NoEndActivites')][{i+1}]/div[2]/div/div[2]/div[2]/div[{j+1}]/div[1]/div/div[2]/div[3]/div[1]/div[2]/div")
+    #logging.info(pool)
+
+    elements_token= len(driver.find_elements(By.XPATH, f"(//div[contains(@class, 'LaunchPoolPage')])[1]/div[3]/div[contains(@class,'NoEndActivites')][{i+1}]/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div/div[1]/div[1]"))
+    j=0
+    while j < elements_token:
+        token = driver.find_element(By.XPATH, f"(//div[contains(@class, 'LaunchPoolPage')])[1]/div[3]/div[contains(@class,'NoEndActivites')][{i+1}]/div[2]/div/div[2]/div[2]/div[{j+1}]/div[1]/div[1]/div[1]/div[1]/div[1]")
+        j+=1
+        print(f"token -> {token.text}" )
+    
+    #print(f"pool -> {pool.text}")
+    #print(f"apr -> {apr.text}")
+    i+=1
+
+
+
+
+
 
 
 
