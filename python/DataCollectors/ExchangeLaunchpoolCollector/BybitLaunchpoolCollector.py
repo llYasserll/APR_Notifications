@@ -38,6 +38,7 @@ while i < elements_earntokens:
     #print(f"pool -> {pool.text}")
     #print(f"apr -> {apr.text}")
     i+=1
+    ##
 
 
 
