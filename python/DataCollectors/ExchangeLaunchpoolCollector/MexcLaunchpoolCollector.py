@@ -12,3 +12,4 @@ driver = webdriver.Edge()
 driver.get("https://www.mexc.com/mx-activity/launchpool")
 driver.maximize_window()
 time.sleep(6)
+#
